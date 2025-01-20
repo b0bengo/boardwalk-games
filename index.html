@@ -25,7 +25,7 @@
 
 <body class="d-flex flex-column min-vh-100">
   <!-- Navigation Bar -->
-  <nav id="navbar" class="navbar navbar-expand-lg" data-bs-theme="dark">
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
     <div class="container">
       <a class="navbar-brand" href="index.html">
         <img src="assets/images/logo-sm-white.png" alt="Boardwalk Games Logo" class="logo">
@@ -41,7 +41,7 @@
             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="#services">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#events">Events</a>
@@ -242,7 +242,7 @@
           <a href="" class="btn custom-button-filled ms-lg-3">*Get 20% off with valid student ID</a>
         </div>
         </div>
-        <div class="col-12 text-center mt-4">
+        <div class="col-12 text-center my-4">
           <a href="" class="btn custom-button-outline ms-lg-3">Book Now</a>
         </div>
       </div>
@@ -325,6 +325,27 @@
 
   <!-- Font Awesome JS Link -->
   <script src="https://kit.fontawesome.com/682aa69031.js" crossorigin="anonymous"></script>
+
+  <script>
+    document
+        .querySelectorAll(".navbar-collapse .nav-link")
+        .forEach((link) => {
+            link.addEventListener("click", function (e) {
+                let section = document.querySelector(e.target.getAttribute("href"));
+                if (section) {
+                    e.preventDefault(); // Prevent default anchor click behavior
+                    let navbarHeight = document.querySelector(".navbar-toggler").offsetHeight;
+                    window.scroll({
+                        top: section.offsetTop - navbarHeight, // Adjust for navbar height
+                        behavior: "smooth",
+                    });
+                    document
+                        .querySelector(".navbar-collapse")
+                        .classList.remove("show"); // Collapse navbar
+                }
+            });
+        });
+</script>
 
 </body>
 
